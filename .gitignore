@@ -19,27 +19,35 @@ yarn-debug.log*
 yarn-error.log*
 
 # OS and editor specific
-.DS_Store        # macOS Finder settings
-Thumbs.db        # Windows thumbnail cache
-.vscode/          # VSCode settings
-.idea/            # JetBrains IDE settings
+.DS_Store        
+# macOS Finder settings
+Thumbs.db        
+# Windows thumbnail cache
+.vscode/          
+# VSCode settings
+.idea/            
+# JetBrains IDE settings
 
 # Build and distribution folders
 /dist
 /build
 /.next
-/public/assets  # If you have generated static assets
+/public/assets  
+# If you have generated static assets
 
 
 .cache/
-public/index.html  # Only if dynamically generated via build process
+public/index.html  
+# Only if dynamically generated via build process
 
-package-lock.json  # If you're using yarn, use yarn.lock instead
+**/package-lock.json
+# If you're using yarn, use yarn.lock instead
 yarn.lock
 
 
 /migrations/
 
 # Temporary files
-*.swp             # Vim swap files
+*.swp             
+# Vim swap files
 *.swo
