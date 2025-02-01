@@ -2,7 +2,7 @@ const { User } = require("../models/User");
 const { generateToken } = require("../utils/token");
 const bcrypt = require("bcryptjs");
 
-const register = async (req, res) => {
+exports.register = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   try {
     const user = await User.findOne({
