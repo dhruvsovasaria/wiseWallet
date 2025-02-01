@@ -1,28 +1,34 @@
-const { Datatypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const sq = require("../config/db");
-const becrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 const User = sq.define("User", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   firstName: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   lastName: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   email: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   password: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });
 
 User.beforeCreate(async (user) => {
-  user.password = await becrypt.hash(user.password, 10);
+  user.password = await bcrypt.hash(user.password, 10);
 });
 
 module.exports = User;
