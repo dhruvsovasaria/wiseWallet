@@ -1,5 +1,4 @@
-require("dotenv").config({ path: "../../../.env" });
-
+require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
 const databaseUrl = process.env.DATABASE_URL;
@@ -12,6 +11,7 @@ const sq = new Sequelize(databaseUrl, {
       rejectUnauthorized: false,
     },
   },
+  logging: false,
 });
 
 const authDB = async () => {
