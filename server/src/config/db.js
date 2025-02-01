@@ -1,14 +1,25 @@
-const { Sequelize } = require("sequelize");
-require("dotenv").config();
+require("dotenv").config({ path: "../../../.env" });
 
-const sq = new Sequelize(process.env.DATABASE_URL);
+const { Sequelize } = require("sequelize");
+
+const databaseUrl = process.env.DATABASE_URL;
+
+const sq = new Sequelize(databaseUrl, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+});
 
 const authDB = async () => {
   try {
     await sq.authenticate();
     console.log("Connection established");
   } catch (error) {
-    console.error("Unable to connect :", error);
+    console.error("Unable to connect:", error);
   }
 };
 
